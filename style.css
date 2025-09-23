@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #c6c8ca;
+}
+/* *************** Header  *************** */
+
 .header {
     width: 100%;
     height: 250px;
@@ -110,8 +115,8 @@
 
 .search_box {
     margin: 20px;
-    width: 45%;
-    height: 65px;
+    width: 40%;
+    height: 55px;
     background-color: #fff;
     border-radius: 5px;
     border: 3px solid #81D4FA;
@@ -145,7 +150,7 @@
     border: 0px;
     padding: 5px;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .advertising {
@@ -162,6 +167,117 @@
 .advertising a:hover{
     color: var(--hover_green_color);
 }
+
+/* *************** Main Section  *************** */
+.main_content {
+    width: 65%;
+    height: 700px;
+    /* background-color: gray; */
+    margin: -15px auto 0px;
+    display: flex;
+}
+
+.job_result {
+    width: 35%;
+    height: 100%;
+    background-color: #fff;
+    border-radius:10px 0px 0px 10px;
+    padding: 5px 10px;
+}
+
+.job_result_header {
+    width: 100%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    font-size: 12px;
+}
+
+.job_result_header_right {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.job_result_header span, a {
+    display: inline-block;
+}
+
+.filter_icon svg {
+    display: inline-block;
+    margin-top: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.number_of_results {
+    font-weight: bold;
+}
+
+.job_result_header_end_line {
+    display: block;
+    width: 22.75%;
+    height: 2px;
+    margin-left: -10px;
+    background-color: #EFF2F5;
+    position: absolute;
+}
+
+.job_result_main {
+    width: 100%;
+    height: 87%;
+}
+
+.job_result_footer {
+    width: 100%;
+    height: 6%;
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.next_page_btn svg {
+    width: 12px;
+    height: 12px;
+}
+
+.next_page_btn {
+    display: flex;
+    gap: 4px;
+    background-color: #DDE2E6;
+    text-align: center;
+    padding: 2px 0px;
+    text-decoration: none;
+    color: #747C82;
+    padding: 5px 7px;
+    border-radius: 60px;
+    font-size: 10px;
+}
+
+
+
+
+
+
+
+
+
+.footer {
+    width: 100%;
+    height: 100px;
+}
+
+.job_details_container {
+    width: 65%;
+    height: 100%;
+    background-color: #EFF2F5;
+    border-radius:0px 10px 10px 0px;
+}
+
+
 
 /* *************** Hover  *************** */
 .bookmark_container:hover svg {
@@ -185,4 +301,8 @@
 
 .logo_container:hover {
     box-shadow: 1px 1px 40px var(--hover_green_color);
+}
+
+.next_page_btn:hover {
+    background-color: #cbcbcc;
 }
