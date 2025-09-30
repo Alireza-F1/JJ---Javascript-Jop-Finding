@@ -40,7 +40,7 @@ body {
 .logo_container {
     height: 60px;
     width: 60px;
-    background-image: url('./Assets/logo.jpg');
+    background-image: url('../Assets/mozzie.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -133,6 +133,14 @@ body {
     gap: 10px;
     width: 100%;
     height: 100%;
+}
+
+.search_form_correct {
+    box-shadow: 0px 0px 10px 10px rgba(95, 209, 53, 0.5);
+}
+
+.search_form_incorrect {
+    box-shadow: 0px 0px 10px 10px rgba(227, 54, 51, 0.5);
 }
 
 .search_btn {
@@ -255,6 +263,42 @@ body {
 .job_result_main {
     width: 100%;
     height: 87%;
+    position: relative;
+}
+
+/* *************** Spinner  *************** */
+
+.spinner {
+    position: absolute;
+    border-radius: 50%;
+    animation: spinner 1s infinite linear;
+    visibility: hidden;
+}
+
+.spinner--search {
+    left: 40%;
+    top: 18%;
+    width: 85px;
+    height: 85px;
+    border-top: 5px solid #e2e7e9;
+    border-right: 5px solid #e2e7e9;
+    border-bottom: 5px solid #e2e7e9;
+    border-left: 5px solid #ccd1d3;
+}
+
+.spinner--job-details {
+    left: 50%;
+    top: 40%;
+    width: 105px;
+    height: 105px;
+    border-top: 6px solid #d5d9db;
+    border-right: 6px solid #d5d9db;
+    border-bottom: 6px solid #d5d9db;
+    border-left: 6px solid #bbc0c2;
+}
+
+.spinner--visible {
+    visibility: visible;
 }
 
 .job_item {
@@ -391,9 +435,8 @@ body {
 }
 
 .before_uploading {
-    width: 42%;
+    width: 50%;
     height: 20%;
-    display: none;
 }
 
 .before_uploading_header{
@@ -415,6 +458,7 @@ body {
 .after_uploading {
     width: 100%;
     height: 100%;
+    display: none;
 }
 
 .after_uploading_header {
@@ -688,6 +732,43 @@ body {
 }
 
 
+/* *************** Error Handler  *************** */
+.invalid_input_error{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    border-radius: 10px;
+    visibility: hidden;
+}
+
+.error_header {
+    font-size: 12px;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgb(214, 76, 76);
+    border-radius: 10px 10px 0px 0px;
+}
+
+.error_message {
+    font-size: 12px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.invalid_input_error_visible {
+    visibility: visible;
+}
+
+
 /* *************** Media Query: Responsive  *************** */
 @media screen and (max-width: 1000px){
     .job_result {
@@ -750,5 +831,16 @@ body {
 
     .filter_btn {
         display: none;
+    }
+}
+
+
+/* *************** Key Frames  *************** */
+@keyframes spinner {
+    from {
+        transform: rotate(0deg);
+    } 
+    to {
+        transform: rotate(360deg);
     }
 }
