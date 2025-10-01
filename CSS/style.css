@@ -254,6 +254,14 @@ body {
 
 .job_result_header_end_line {
     display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #EFF2F5;
+    position: absolute;
+}
+
+.job_result_header_end_line_first {
+    display: block;
     width: 26%;
     height: 2px;
     background-color: #EFF2F5;
@@ -782,7 +790,7 @@ body {
     }
 
     .job_result_header_end_line {
-        width: 65%;
+        width: 100%;
     }
 
     .search_box {
@@ -792,6 +800,18 @@ body {
     .search_btn svg {
         height: 15px;
         width: 15px;
+    }
+
+    .total_job_avialable {
+        display: none;
+    }
+
+    .copyright_container {
+        font-size: 12px;
+    }
+
+    .job_result_header_end_line_first {
+        width: 65%;
     }
 }
 
