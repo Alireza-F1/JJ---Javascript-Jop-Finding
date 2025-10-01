@@ -295,7 +295,7 @@ body {
 }
 
 .spinner--job-details {
-    left: 50%;
+    left: 40%;
     top: 40%;
     width: 105px;
     height: 105px;
@@ -469,6 +469,11 @@ body {
     display: none;
 }
 
+.after_uploading_active{
+    display: block;
+    position: relative;
+}
+
 .after_uploading_header {
     width: 100%;
     height: 180px;
@@ -637,7 +642,7 @@ body {
 }
 
 .company_reviews_items p {
-    width: 50%;
+    width: 40%;
 }
 
 .review_item {
@@ -813,6 +818,10 @@ body {
     .job_result_header_end_line_first {
         width: 65%;
     }
+
+    .search_term::placeholder {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 500px){
@@ -851,6 +860,10 @@ body {
 
     .filter_btn {
         display: none;
+    }
+
+    .search_term::placeholder {
+        font-size: 8px;
     }
 }
 
