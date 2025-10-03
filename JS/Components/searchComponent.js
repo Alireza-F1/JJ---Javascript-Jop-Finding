@@ -1,61 +1,19 @@
 import {inputSearchTermEl, formEl, errorBoxEl, spinnerSearchEl,
-        resultNumberEl, jobItemsContainer, Base_URL} from '../Elements.js';
+        resultNumberEl, jobItemsContainer, Base_URL, nextPageEl,
+        nextPageNumberEl, fromToResultEl, previousPageNumberEl,
+        previousPageEl} from '../Elements.js';
 
-const submitHandler = (event) => {
-    // Removing all the defaults
-    event.preventDefault();
+let pageNum=1;
+let job_items = [];
 
 
-    // Remove all the element when user retype keywords
-    let jobItemEl = document.querySelectorAll('.job_item');
-    if (jobItemEl) {
-      jobItemEl.forEach(el => el.remove());
-    }
+const create_items = (job_items, pageNum=1) => {
+    let from = (pageNum-1)*7;
+    let to = pageNum*7;
 
-    // Get the input value
-    const searchTermValue = inputSearchTermEl.value.toLowerCase();
+    fromToResultEl.textContent = `items: ${from+1} to ${to}`;
 
-    // Input Validation
-    const forbiddenChars = /[0-9 | # | @ | ! | ~ | $ | % | / | ^ | *]/;
-    if (forbiddenChars.test(searchTermValue)) {
-
-        // Add input incorrect effect for 1.5s and then remove it
-        // Effect on search box
-        formEl.classList.add('search_form_incorrect');
-        setTimeout(() => {formEl.classList.remove('search_form_incorrect')}, 1500);
-
-        // Error box
-        errorBoxEl.classList.add('invalid_input_error_visible');
-        setTimeout(() => {errorBoxEl.classList.remove('invalid_input_error_visible')}, 1500);
-
-        return;
-    }
-
-    // Revert the focus from search box
-    inputSearchTermEl.blur();
-
-    // Add input correct effect for 1.5s and then remove it
-    formEl.classList.add('search_form_correct');
-    setTimeout(() => {formEl.classList.remove('search_form_correct')}, 1500);
-    
-    // Add spinner for waiting until fetch
-    spinnerSearchEl.classList.add('spinner--visible');
-
-    // Fetching data from API
-    fetch(Base_URL + `?search=${searchTermValue}`)
-    .then(res => {
-        if (!res.ok) {console.log('Server is not responding')}
-        else {
-            spinnerSearchEl.classList.remove('spinner--visible');
-            return res.json();
-        }
-    })
-    .then(data => {
-        const job_items = data.jobItems;
-        resultNumberEl.textContent = job_items.length;
-
-        // Creating items
-        job_items.slice(0, 7).forEach(item => {
+    job_items.slice(from , to).forEach(item => {
             const single_job_item = `
                 <a href="${item.id}" class="job_item">
                 <div class="job_item_logo_container">
@@ -106,6 +64,105 @@ const submitHandler = (event) => {
             // Add each single item to the HTML code
             jobItemsContainer.insertAdjacentHTML('afterbegin', single_job_item);
         })
+}
+
+const submitHandler = (event) => {
+    // Removing all the defaults
+    if (pageNum==1){
+        event.preventDefault();
+    }
+    
+    // If users are in different pages, they should retrieve to the first place when thy submit
+    // new query.
+    pageNum = 1;
+    nextPageNumberEl.textContent = 2;
+    previousPageNumberEl.textContent = 0;
+
+    // Remove all the element when user retype keywords
+    let jobItemEl = document.querySelectorAll('.job_item');
+    if (jobItemEl) {
+      jobItemEl.forEach(el => el.remove());
+    }
+
+    // Get the input value
+    const searchTermValue = inputSearchTermEl.value.toLowerCase();
+
+    // Input Validation
+    const forbiddenChars = /[0-9 | @ | ! | ~ | $ | % | / | ^ | *]/;
+    if (forbiddenChars.test(searchTermValue)) {
+
+        // Add input incorrect effect for 1.5s and then remove it
+        // Effect on search box
+        formEl.classList.add('search_form_incorrect');
+        setTimeout(() => {formEl.classList.remove('search_form_incorrect')}, 1500);
+
+        // Error box
+        errorBoxEl.classList.add('invalid_input_error_visible');
+        setTimeout(() => {errorBoxEl.classList.remove('invalid_input_error_visible')}, 1500);
+
+        return;
+    }
+
+    // Revert the focus from search box
+    inputSearchTermEl.blur();
+
+    // Add input correct effect for 1.5s and then remove it
+    formEl.classList.add('search_form_correct');
+    setTimeout(() => {formEl.classList.remove('search_form_correct')}, 1500);
+    
+    // Add spinner for waiting until fetch
+    spinnerSearchEl.classList.add('spinner--visible');
+
+    // Fetching data from API
+    fetch(Base_URL + `?search=${searchTermValue}`)
+    .then(res => {
+        if (!res.ok) {console.log('Server is not responding')}
+        else {
+            spinnerSearchEl.classList.remove('spinner--visible');
+            return res.json();
+        }
+    })
+    .then(data => {
+        job_items = data.jobItems;
+        resultNumberEl.textContent = job_items.length;
+
+        // Creating items
+        create_items(job_items, pageNum);
     })
 }
+
+
+const nextPageHandler = () => {
+    if (Math.ceil(job_items.length/7) > pageNum){
+        pageNum = Number(nextPageNumberEl.textContent);
+        nextPageNumberEl.textContent = pageNum+1;
+        previousPageNumberEl.textContent = pageNum-1;
+
+        // Remove all the element when user retype keywords
+        let jobItemEl = document.querySelectorAll('.job_item');
+        if (jobItemEl) {
+            jobItemEl.forEach(el => el.remove());
+        }
+        create_items(job_items, pageNum);
+    }
+}
+
+const previousPageHandler = () => {
+    if (1 < pageNum){
+        pageNum = pageNum - 1;
+        previousPageNumberEl.textContent = pageNum-1;
+        nextPageNumberEl.textContent = pageNum+1;
+
+        // Remove all the element when user retype keywords
+        let jobItemEl = document.querySelectorAll('.job_item');
+        if (jobItemEl) {
+            jobItemEl.forEach(el => el.remove());
+        }
+
+        create_items(job_items, pageNum);
+    }
+}
+
 formEl.addEventListener('submit', submitHandler);
+nextPageEl.addEventListener('click', nextPageHandler);
+previousPageEl.addEventListener('click', previousPageHandler);

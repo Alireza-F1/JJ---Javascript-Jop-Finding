@@ -5,6 +5,11 @@ export let errorBoxEl = document.querySelector('.invalid_input_error');
 export let spinnerSearchEl = document.querySelector('.spinner--search');
 export let resultNumberEl = document.querySelector('.number_of_results');
 export let jobItemsContainer = document.querySelector('.job_result_main');
+export let nextPageEl = document.querySelector('.next_page_btn');
+export let nextPageNumberEl = document.querySelector('.next_page_number');
+export let previousPageEl = document.querySelector('.previous_page_button');
+export let previousPageNumberEl = document.querySelector('.previous_page_number');
+export let fromToResultEl = document.querySelector('.from_to_result');
 
 // Related to the Job Details
 export let spinnerJobDetailsEl = document.querySelector('.spinner--job-details');

@@ -154,7 +154,9 @@ body {
 .search_btn svg {
     height: 25px;
     width: 25px;
-    
+    display: block;
+    text-align: center;
+    line-height: 25px;
 }
 
 .search_term{
@@ -408,16 +410,25 @@ body {
     margin: 5px 0px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     padding: 0px 10px;
 }
 
-.next_page_btn svg {
+.from_to_result{
+    font-size: 14px;
+}
+
+.next_page_btn svg, .previous_page_button svg {
     width: 12px;
     height: 12px;
 }
 
-.next_page_btn {
+.next_previous_page{
+    display: flex;
+    gap: 5px;
+}
+
+.next_page_btn, .previous_page_button {
     display: flex;
     gap: 4px;
     background-color: #DDE2E6;
@@ -428,7 +439,6 @@ body {
     padding: 5px 7px;
     border-radius: 60px;
     font-size: 10px;
-
 }
 
 .job_details_container {
@@ -720,7 +730,7 @@ body {
     box-shadow: 1px 1px 40px var(--hover_green_color);
 }
 
-.next_page_btn:hover {
+.next_page_btn:hover, .previous_page_button:hover {
     background-color: #cbcbcc;
 }
 
@@ -803,6 +813,7 @@ body {
     }
 
     .search_btn svg {
+        display: block;
         height: 15px;
         width: 15px;
     }

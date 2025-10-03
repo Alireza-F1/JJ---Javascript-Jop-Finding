@@ -21,6 +21,7 @@ const clickHandler = (event) => {
     const jobItemActive = event.target.closest('.job_item');
     const jobId = jobItemActive.getAttribute('href');
     
+    // Fetching the detail of the job
     fetch(Base_URL + '/' + jobId)
     .then(res => {
         if (!res.ok){
@@ -121,11 +122,5 @@ const clickHandler = (event) => {
     })
     
 } 
-
-
-
-
-
-
 
 jobItemEl.addEventListener('click', clickHandler); 

@@ -2,6 +2,7 @@ import './JS/Components/searchComponent.js';
 import './JS/Components/JobDetailsComponent.js';
 import {totalAvailableJobEl, Base_URL} from './JS/Elements.js';
 
+// Getting the total jobs available
 fetch(Base_URL)
 .then(res => {
     if(!res.ok){
