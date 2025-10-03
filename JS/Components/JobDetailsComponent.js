@@ -1,12 +1,18 @@
 import {spinnerJobDetailsEl, jobItemEl, beforeUploadingJobDetailsEl,
-        afterUploadingJobDetailsEl, Base_URL} from '../Elements.js';
+        afterUploadingJobDetailsEl, Base_URL, jobDetailsContainerEl, jobResultEl,
+        jobEl} from '../Elements.js';
+
 
 const clickHandler = (event) => {
     // Remove all the defaults
     event.preventDefault();
 
+    // Because we don't have this classes in the main index.html file (we insert later when users click),
+    // we have to find it when they click on job items.
     let afterUploadingHeaderEl = document.querySelector('.after_uploading_header');
     let afterUploadingMainsEl = document.querySelector('.after_uploading_main');
+
+    // Deleting all the previous elements
     if (afterUploadingHeaderEl) {
         afterUploadingHeaderEl.remove();
         afterUploadingMainsEl.remove();
@@ -21,6 +27,8 @@ const clickHandler = (event) => {
     const jobItemActive = event.target.closest('.job_item');
     const jobId = jobItemActive.getAttribute('href');
     
+
+
     // Fetching the detail of the job
     fetch(Base_URL + '/' + jobId)
     .then(res => {
@@ -45,6 +53,7 @@ const clickHandler = (event) => {
                             </svg>
                         </span>
                     </button>
+                    <button class="back_button">← Back</button>
                     <div class="after_uploading_header_job">
                         <h4 class="after_uploading_header_job_title">${jobDetail.title}</h4>
                         <p class="after_uploading_header_company"${jobDetail.company}</p>
@@ -118,9 +127,20 @@ const clickHandler = (event) => {
         
         `;
 
+        if (window.innerWidth <= 1000) {
+            jobResultEl.style.display = "none";
+            jobDetailsContainerEl.style.display = "block";
+        }
+
         afterUploadingJobDetailsEl.insertAdjacentHTML('afterbegin', jobDetailHTML);
+        const backBtn = document.querySelector('.back_button');
+        backBtn.addEventListener("click", () => {
+                jobDetailsContainerEl.style.display = "none";
+                jobResultEl.style.display = "block";
+        });
     })
     
 } 
 
 jobItemEl.addEventListener('click', clickHandler); 
+

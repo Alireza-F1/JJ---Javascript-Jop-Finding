@@ -7,6 +7,7 @@ let pageNum=1;
 let job_items = [];
 
 
+
 const create_items = (job_items, pageNum=1) => {
     let from = (pageNum-1)*7;
     let to = pageNum*7;

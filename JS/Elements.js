@@ -5,6 +5,7 @@ export let errorBoxEl = document.querySelector('.invalid_input_error');
 export let spinnerSearchEl = document.querySelector('.spinner--search');
 export let resultNumberEl = document.querySelector('.number_of_results');
 export let jobItemsContainer = document.querySelector('.job_result_main');
+export let jobResultEl = document.querySelector('.job_result');
 export let nextPageEl = document.querySelector('.next_page_btn');
 export let nextPageNumberEl = document.querySelector('.next_page_number');
 export let previousPageEl = document.querySelector('.previous_page_button');
@@ -17,6 +18,9 @@ export let jobItemEl = document.querySelector('.job_result_main');
 export let beforeUploadingJobDetailsEl = document.querySelector('.before_uploading');
 export let afterUploadingJobDetailsEl = document.querySelector('.after_uploading');
 export let totalAvailableJobEl = document.querySelector('.total_job_avialable_footer');
+export let jobDetailsContainerEl = document.querySelector('.job_details_container');
+export let jobEl = document.querySelector('.job_item');
+
 
 
 
