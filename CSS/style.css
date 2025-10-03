@@ -185,7 +185,7 @@ body {
 
 /* *************** Main Section  *************** */
 .main_content {
-    width: 80%;
+    width: 65%;
     height: 700px;
     /* background-color: gray; */
     margin: -15px auto 0px;
@@ -815,12 +815,13 @@ body {
 }
 
 /* *************** Media Query: Responsive  *************** */
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1000px){
     .job_result {
         border-radius: 5px;
     }
     
     .main_content{
+        width: 80%;
         flex-direction: column;
     }
 
@@ -856,7 +857,7 @@ body {
     }
 
     .job_result_header_end_line_first {
-        width: 65%;
+        width: 80%;
     }
 
     .search_term::placeholder {
@@ -883,7 +884,19 @@ body {
     border-radius: 2px;
     background-color: #C6C8CA;
     color: var(--background_color);
-}
+    }
+
+    .qualifications_header, .company_reviews_header {
+        font-size: 12px;
+    }
+
+    .after_uploading_main_job_description_other{
+        font-size: 12px;
+    }
+
+    .qualifications_subheader, .company_reviews_subheader{
+        font-size: 8px;
+    }
 }
 
 @media screen and (max-width: 500px){
