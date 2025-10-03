@@ -183,14 +183,9 @@ body {
     color: var(--hover_green_color);
 }
 
-
-
-
-
-
 /* *************** Main Section  *************** */
 .main_content {
-    width: 65%;
+    width: 80%;
     height: 700px;
     /* background-color: gray; */
     margin: -15px auto 0px;
@@ -820,7 +815,7 @@ body {
 }
 
 /* *************** Media Query: Responsive  *************** */
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 900px){
     .job_result {
         border-radius: 5px;
     }
